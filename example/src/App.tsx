@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Feedback, Fields, Form, Input } from 'valid-form';
-import 'valid-form/dist/index.css';
+import { Feedback, Fields, Form, Input, Submit } from 'valid-form';
 
 const App = () => {
   
@@ -16,6 +15,10 @@ const App = () => {
 
   function validateAge(value: string) {
     const val = parseInt(value);
+
+    if(value === "") {
+      return "required";
+    }
 
     return val > 50 ? "valid" : "invalid";
   }
@@ -39,6 +42,10 @@ const App = () => {
           deps={["username"]}
         />
         <Feedback for="age" />
+
+        <br />
+
+        <Submit />
       </Form>
     </div>
   );

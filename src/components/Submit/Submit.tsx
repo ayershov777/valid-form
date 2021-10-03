@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-export default function Submit() {
+type SubmitProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "type">;
+
+export default function Submit(props: SubmitProps) {
     return (
-        <div>
-            Submit
-        </div>
-    )
+        <input {...props} type="submit" />
+    );
 }

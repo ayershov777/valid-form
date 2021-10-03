@@ -13,6 +13,7 @@ type InputProps =
 export default function Input (props: InputProps) {
     const { fields, setFields } = useContext(formContext);
 
+    // initialize field
     useEffect(() => {
         if(setFields) {
             const field: Field = {
@@ -25,14 +26,14 @@ export default function Input (props: InputProps) {
         }
     }, []);
 
+    // call onChange and onBlur
     function update(value: string) {
         if(props.validate && setFields) {
-
             fields[props.fieldName] = {
                 ...fields[props.fieldName],
                 feedback: props.validate(value, fields),
-                value
-            }
+                value,
+            };
 
             props.deps?.forEach(dep => {
                 const dependent = fields[dep];
